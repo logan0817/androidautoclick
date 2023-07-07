@@ -7,13 +7,6 @@ import com.example.androidautoclick.ui.uitils.CommonPreferencesUtil;
 import com.hjq.bar.ITitleBarStyle;
 import com.hjq.bar.TitleBar;
 
-/**
- * <pre>
- *     author: momoxiaoming
- *     time  : 2019/4/23
- *     desc  : new class
- * </pre>
- */
 public class UiApplication extends Application
 {
     public static Context context;
