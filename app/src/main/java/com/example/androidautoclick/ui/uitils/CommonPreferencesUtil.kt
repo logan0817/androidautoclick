@@ -14,8 +14,6 @@ object CommonPreferencesUtil {
     private var prefs: SharedPreferences? = null
 
     private const val SHARED_PREF_FILE_NAME = "com.android.androidautoclick.commonpreferences"
-    const val SUPPORTEDLOCALES_KEY = "supportedLocales.key"
-
 
     @Suppress("UNCHECKED_CAST")
     fun getValue(key: String, default: Any): Any = with(prefs) {

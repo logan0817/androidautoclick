@@ -5,17 +5,14 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
-import android.graphics.Color
 import android.os.Bundle
 import android.provider.Settings
-import android.view.View
-import android.widget.CheckBox
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.auto.assist.accessibility.util.ApiUtil
 import com.example.androidautoclick.R
 import com.example.androidautoclick.ui.uitils.Utils
-import com.example.androidautoclick.ui.script.LiveRoomAutomaticLikesScript
+import com.example.androidautoclick.ui.script.AnXinLiveRoomAutomaticLikesScript
 import com.example.androidautoclick.ui.uitils.CommonPreferencesUtil
 import com.hjq.bar.OnTitleBarListener
 import com.hjq.bar.TitleBar
@@ -35,15 +32,15 @@ class MainActivity : AppCompatActivity() {
         Utils.getAllApps(this)
         initView()
         setListener()
-        LiveRoomAutomaticLikesScript.hostName =
+        AnXinLiveRoomAutomaticLikesScript.hostName =
             CommonPreferencesUtil.getString(
                 EditSettingsActivity.HOST_NAME_KEY,
-                LiveRoomAutomaticLikesScript.defaultHostName
+                AnXinLiveRoomAutomaticLikesScript.defaultHostName
             )
-        LiveRoomAutomaticLikesScript.mustConditions =
+        AnXinLiveRoomAutomaticLikesScript.mustConditions =
             CommonPreferencesUtil.getString(
                 EditSettingsActivity.MUST_KEY,
-                LiveRoomAutomaticLikesScript.defaultMustConditions
+                AnXinLiveRoomAutomaticLikesScript.defaultMustConditions
             )
 
     }
@@ -72,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                     MainAccessService::class.java
                 )
             ) {
-                Thread { LiveRoomAutomaticLikesScript.doWrok() }.start()
+                Thread { AnXinLiveRoomAutomaticLikesScript.doWrok() }.start()
             } else {
                 Toast.makeText(this@MainActivity, "请开启辅助功能", Toast.LENGTH_SHORT).show()
                 gotoAccessibilitySettings(this@MainActivity)
@@ -98,9 +95,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateCurrentDesc() {
         val currentHostName =
-            CommonPreferencesUtil.getString(EditSettingsActivity.HOST_NAME_KEY, LiveRoomAutomaticLikesScript.hostName)
+            CommonPreferencesUtil.getString(EditSettingsActivity.HOST_NAME_KEY, AnXinLiveRoomAutomaticLikesScript.hostName)
         val currentMmustConditions =
-            CommonPreferencesUtil.getString(EditSettingsActivity.MUST_KEY, LiveRoomAutomaticLikesScript.mustConditions)
+            CommonPreferencesUtil.getString(EditSettingsActivity.MUST_KEY, AnXinLiveRoomAutomaticLikesScript.mustConditions)
         tvCurrentDesc.text =
             "当前设置如下：\n抖音昵称：${currentHostName}\n判断直播间条件：${currentMmustConditions}\n"
     }

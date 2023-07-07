@@ -3,17 +3,6 @@ package com.example.androidautoclick.ui.uitils
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-/**
- *
- * Created by Logan.gan on 2020/12/29.
- * Describe :
- * json parsing tool class
- *
- * Used for unified replacement of analytical framework
- * or
- * Exception catch to prevent app crash
- *
- * */
 class GsonUtil {
     companion object {
         private var gson: Gson = Gson()

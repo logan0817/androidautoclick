@@ -6,7 +6,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
 import com.example.androidautoclick.R
-import com.example.androidautoclick.ui.script.LiveRoomAutomaticLikesScript
+import com.example.androidautoclick.ui.script.AnXinLiveRoomAutomaticLikesScript
 import com.example.androidautoclick.ui.uitils.CommonPreferencesUtil
 import com.hjq.bar.OnTitleBarListener
 import com.hjq.bar.TitleBar
@@ -42,10 +42,10 @@ class EditSettingsActivity : AppCompatActivity() {
             override fun afterTextChanged(p0: Editable?) {
                 var value = p0.toString()
                 if (value.isNullOrBlank() || "null" == value) {
-                    value = LiveRoomAutomaticLikesScript.defaultHostName
+                    value = AnXinLiveRoomAutomaticLikesScript.defaultHostName
                 }
                 CommonPreferencesUtil.saveValue(HOST_NAME_KEY, value)
-                LiveRoomAutomaticLikesScript.hostName = "'${value}'"
+                AnXinLiveRoomAutomaticLikesScript.hostName = "'${value}'"
                 updateCurrentDesc()
             }
         })
@@ -59,10 +59,10 @@ class EditSettingsActivity : AppCompatActivity() {
             override fun afterTextChanged(p0: Editable?) {
                 var value = p0.toString()
                 if (value.isNullOrBlank() || "null" == value) {
-                    value = LiveRoomAutomaticLikesScript.defaultMustConditions
+                    value = AnXinLiveRoomAutomaticLikesScript.defaultMustConditions
                 }
                 CommonPreferencesUtil.saveValue(MUST_KEY, value)
-                LiveRoomAutomaticLikesScript.mustConditions = "'${value}'"
+                AnXinLiveRoomAutomaticLikesScript.mustConditions = "'${value}'"
                 updateCurrentDesc()
             }
         })
@@ -99,9 +99,9 @@ class EditSettingsActivity : AppCompatActivity() {
 
     private fun updateCurrentDesc() {
         val currentHostName =
-            CommonPreferencesUtil.getString(HOST_NAME_KEY, LiveRoomAutomaticLikesScript.hostName)
+            CommonPreferencesUtil.getString(HOST_NAME_KEY, AnXinLiveRoomAutomaticLikesScript.hostName)
         val currentMmustConditions =
-            CommonPreferencesUtil.getString(MUST_KEY, LiveRoomAutomaticLikesScript.mustConditions)
+            CommonPreferencesUtil.getString(MUST_KEY, AnXinLiveRoomAutomaticLikesScript.mustConditions)
         tvCurrentDesc.text =
             "当前设置如下：\n抖音昵称：${currentHostName}\n判断直播间条件：${currentMmustConditions}\n"
     }
