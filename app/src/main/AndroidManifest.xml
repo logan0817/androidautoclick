@@ -20,7 +20,7 @@
         android:theme="@style/Theme.AndroidAutoClick"
         tools:targetApi="31">
         <activity
-            android:name=".ui.PinLockActivity"
+            android:name=".ui.MainActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.MainActivity"></activity>
+        <activity android:name=".ui.PinLockActivity"></activity>
         <activity android:name=".ui.EditSettingsActivity"></activity>
         <service
             android:name=".ui.MainAccessService"

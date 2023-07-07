@@ -48,7 +48,7 @@
             android:layout_below="@id/hostNameEditText"
             android:layout_marginTop="30dp"
             android:background="@null"
-            android:hint="请输入判断师傅在直播间条件"
+            android:hint="请输入判断是否在直播间条件"
             android:imeOptions="actionNext"
             android:singleLine="true"
             android:textColor="@color/white"

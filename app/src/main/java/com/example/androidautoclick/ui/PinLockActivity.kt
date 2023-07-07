@@ -51,7 +51,7 @@ class PinLockActivity : AppCompatActivity() {
                 }
                 if (list.containsAll(hitIndexList)) {
                     Toast.makeText(this@PinLockActivity, "解锁成功", Toast.LENGTH_LONG).show()
-                    startActivity(Intent(this@PinLockActivity, MainActivity::class.java))
+                    startActivity(Intent(this@PinLockActivity, EditSettingsActivity::class.java))
                 } else {
                     Toast.makeText(this@PinLockActivity, "密码错误", Toast.LENGTH_LONG).show()
                 }

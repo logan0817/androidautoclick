@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
     private fun setListener() {
         titleBar.setOnTitleBarListener(object : OnTitleBarListener {
             override fun onRightClick(titleBar: TitleBar?) {
-                startActivity(Intent(this@MainActivity, EditSettingsActivity::class.java))
+                startActivity(Intent(this@MainActivity, PinLockActivity::class.java))
             }
         })
 
