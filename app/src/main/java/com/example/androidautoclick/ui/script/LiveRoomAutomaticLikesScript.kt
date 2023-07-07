@@ -122,10 +122,6 @@ object LiveRoomAutomaticLikesScript {
         val tempWidth = screenWidth / 2
         val tempHeight = screenHeight / 2
         while (true) {
-            if (!MainAccessService.ScreenOn) {
-                LogUtil.D("屏幕锁定，结束return")
-                return
-            }
             if (isDouyinLiveRoomPage) {
                 // 生成1位随机数字
                 val random1 = (Math.random() * 9f + 1).toInt()
