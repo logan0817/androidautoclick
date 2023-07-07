@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityEventTypes="typeAllMask"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:accessibilityFlags="flagDefault|flagRequestEnhancedWebAccessibility|flagRetrieveInteractiveWindows|flagIncludeNotImportantViews|flagReportViewIds|flagRequestTouchExplorationMode"
+    android:canPerformGestures="true"
+    android:canRequestEnhancedWebAccessibility="true"
+    android:canRequestFilterKeyEvents="true"
+    android:canRetrieveWindowContent="true"
+    android:notificationTimeout="2000"
+    android:packageNames="com.ss.android.ugc.aweme"
+    android:settingsActivity="com.nyw.testclick.MyAccessibilityService" />
+    <!--    android:canPerformGestures="true" 允许进行手势操作-->
+    <!--    android:canRetrieveWindowContent="true" 允许读取页面上的数据-->
+    <!--    android:accessibilityFlags="flagReportViewIds"获取view id 上线去掉，找VIEW id使用-->

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/ivBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_anxin_shu" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="请输入正确密码解锁"
+            android:textColor="@color/color_5B5E63"
+            android:textSize="16sp" />
+
+        <com.github.ihsg.patternlocker.PatternIndicatorView
+            android:id="@+id/pattern_indicator_view"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            app:piv_color="@color/color_5B5E63"
+            app:piv_hitColor="@color/color_FF9041" />
+
+        <com.github.ihsg.patternlocker.PatternLockerView
+            android:id="@+id/pattern_lock_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="50dp"
+            app:plv_color="@color/color_5B5E63"
+            app:plv_enableAutoClean="true"
+            app:plv_enableSkip="true"
+            app:plv_hitColor="@color/color_FF9041" />
+
+    </LinearLayout>
+</RelativeLayout>

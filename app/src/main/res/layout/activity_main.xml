@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/ivBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_anxin_shu" />
+
+    <com.hjq.bar.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:leftIcon="@null"
+        app:rightIcon="@drawable/icon_settings"
+        app:title="首页"
+        app:titleColor="@color/white" />
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginTop="25dp"
+        android:alpha="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llAccessibilityServiceStatus"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="6095-love-floating.json"
+        app:lottie_loop="true"
+        app:lottie_speed="0.8" />
+
+    <!--    <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="42678-green-love.json"
+            app:lottie_loop="true"
+            app:lottie_speed="1" />-->
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:alpha="0.7"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_colorFilter="@color/red"
+        app:lottie_fileName="lf20_sqrntqup.json"
+        app:lottie_loop="true"
+        app:lottie_speed="0.6" />
+
+    <LinearLayout
+        android:id="@+id/llAccessibilityServiceStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/titleBar">
+
+        <TextView
+            android:id="@+id/tvAccessibilityServiceTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="无障碍辅助模式状态"
+            android:textColor="@color/color_7B7C7D"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <CheckBox
+            android:id="@+id/accessibilityServiceStatus"
+            android:layout_width="24dp"
+            android:layout_height="12dp"
+            android:background="@drawable/selector_cb_common"
+            android:button="@null"
+            android:checked="false"
+            android:clickable="false"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvCurrentDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingMultiplier="1.5"
+        android:padding="20dp"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/actionDouyin"
+        tools:text="AE86" />
+
+    <TextView
+        android:id="@+id/actionDouyin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="跳转到抖音"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
