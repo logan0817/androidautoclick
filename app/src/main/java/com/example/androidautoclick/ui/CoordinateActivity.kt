@@ -58,6 +58,10 @@ class CoordinateActivity : AppCompatActivity() {
             myDrawLineView.x1 = (screenWidth * 0.18F)
             myDrawLineView.y1 = (screenHeight * 0.245F)
             myDrawLineView.invalidate()
+        }else{
+            myDrawLineView.x1 = userX
+            myDrawLineView.y1 = userY
+            myDrawLineView.invalidate()
         }
         val setingsLikeX = CommonPreferencesUtil.getFloat(CoordinateActivity.CLICK_LIKE_X_KEY, 0F)
         val setingsLikeY = CommonPreferencesUtil.getFloat(CoordinateActivity.CLICK_LIKE_Y_KEY, 0F)
@@ -69,6 +73,10 @@ class CoordinateActivity : AppCompatActivity() {
             val tempHeight = (screenHeight * 0.38F)
             myDrawLineView.x2 = tempWidth
             myDrawLineView.y2 = tempHeight
+            myDrawLineView.invalidate()
+        }else{
+            myDrawLineView.x2 = setingsLikeX
+            myDrawLineView.y2 = setingsLikeY
             myDrawLineView.invalidate()
         }
     }
