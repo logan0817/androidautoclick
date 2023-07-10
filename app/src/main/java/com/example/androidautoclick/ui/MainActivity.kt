@@ -1,34 +1,49 @@
 package com.example.androidautoclick.ui
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.provider.Settings
+import android.view.Gravity
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.auto.assist.accessibility.util.ApiUtil
 import com.example.androidautoclick.R
-import com.example.androidautoclick.ui.uitils.Utils
 import com.example.androidautoclick.ui.script.AnXinLiveRoomAutomaticLikesScript
 import com.example.androidautoclick.ui.uitils.CommonPreferencesUtil
+import com.example.androidautoclick.ui.uitils.Utils
 import com.hjq.bar.OnTitleBarListener
 import com.hjq.bar.TitleBar
+import com.lzf.easyfloat.EasyFloat
+import com.lzf.easyfloat.enums.ShowPattern
+import com.lzf.easyfloat.enums.SidePattern
+import com.lzf.easyfloat.interfaces.OnTouchRangeListener
+import com.lzf.easyfloat.permission.PermissionUtils
+import com.lzf.easyfloat.utils.DragUtils
+import com.lzf.easyfloat.widget.BaseSwitchView
 import jp.wasabeef.blurry.Blurry
-import kotlinx.android.synthetic.main.activity_main.tvCurrentDesc
 import kotlinx.android.synthetic.main.activity_main.accessibilityServiceStatus
 import kotlinx.android.synthetic.main.activity_main.actionDouyin
 import kotlinx.android.synthetic.main.activity_main.ivBackground
 import kotlinx.android.synthetic.main.activity_main.llAccessibilityServiceStatus
 import kotlinx.android.synthetic.main.activity_main.titleBar
-import kotlinx.android.synthetic.main.activity_main.tvAccessibilityServiceTitle
+import kotlinx.android.synthetic.main.activity_main.tvCurrentDesc
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var vibrator: Vibrator
+    private var vibrating = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
         Utils.getAllApps(this)
         initView()
         setListener()
@@ -44,6 +59,7 @@ class MainActivity : AppCompatActivity() {
             )
 
     }
+
 
     private fun initView() {
         Blurry.with(ivBackground.context)
@@ -64,16 +80,7 @@ class MainActivity : AppCompatActivity() {
             gotoAccessibilitySettings(this@MainActivity)
         }
         actionDouyin.setOnClickListener {
-            if (ApiUtil.isAccessibilityServiceOn(
-                    UiApplication.context,
-                    MainAccessService::class.java
-                )
-            ) {
-                Thread { AnXinLiveRoomAutomaticLikesScript.doWrok() }.start()
-            } else {
-                Toast.makeText(this@MainActivity, "请开启辅助功能", Toast.LENGTH_SHORT).show()
-                gotoAccessibilitySettings(this@MainActivity)
-            }
+            checkPermission()
         }
     }
 
@@ -84,23 +91,130 @@ class MainActivity : AppCompatActivity() {
             MainAccessService::class.java
         )
         accessibilityServiceStatus.isChecked = accessibilityServiceOn
-        if (accessibilityServiceOn) {
-            tvAccessibilityServiceTitle.setTextColor(getColor(R.color.color_F8F0D6))
-        } else {
-            tvAccessibilityServiceTitle.setTextColor(getColor(R.color.color_7B7C7D))
-        }
         updateCurrentDesc()
     }
 
 
     private fun updateCurrentDesc() {
         val currentHostName =
-            CommonPreferencesUtil.getString(EditSettingsActivity.HOST_NAME_KEY, AnXinLiveRoomAutomaticLikesScript.hostName)
+            CommonPreferencesUtil.getString(
+                EditSettingsActivity.HOST_NAME_KEY,
+                AnXinLiveRoomAutomaticLikesScript.hostName
+            )
         val currentMmustConditions =
-            CommonPreferencesUtil.getString(EditSettingsActivity.MUST_KEY, AnXinLiveRoomAutomaticLikesScript.mustConditions)
+            CommonPreferencesUtil.getString(
+                EditSettingsActivity.MUST_KEY,
+                AnXinLiveRoomAutomaticLikesScript.mustConditions
+            )
+        val currentCount =
+            CommonPreferencesUtil.getString(
+                EditSettingsActivity.CLICK_COUNT_KEY,
+                "3100"
+            )
         tvCurrentDesc.text =
-            "当前设置如下：\n抖音昵称：${currentHostName}\n判断直播间条件：${currentMmustConditions}\n"
+            "当前设置如下\n抖音昵称：${currentHostName}\n判断直播间条件：${currentMmustConditions}\n点击次数：${currentCount}\n"
     }
+
+
+    /**
+     * 检测浮窗权限是否开启，若没有给与申请提示框（非必须，申请依旧是EasyFloat内部进行）
+     */
+    private fun checkPermission() {
+        if (PermissionUtils.checkPermission(this)) {
+            checkAccessibilityServiceOn() {
+                showAppFloat()
+            }
+        } else {
+            AlertDialog.Builder(this)
+                .setMessage("使用浮窗功能，需要您授权悬浮窗权限。")
+                .setPositiveButton("去开启") { _, _ ->
+                    showAppFloat()
+                }
+                .setNegativeButton("取消") { _, _ -> }
+                .show()
+        }
+    }
+
+    private fun showAppFloat() {
+        EasyFloat.with(this.applicationContext)
+            .setShowPattern(ShowPattern.ALL_TIME)
+            .setSidePattern(SidePattern.RESULT_SIDE)
+            .setImmersionStatusBar(true)
+            .setGravity(Gravity.END, -20, 400)
+            .setLayout(R.layout.float_app) {
+                val tvCount = it.findViewById<TextView>(R.id.tvCount)
+                tvCount.text =
+                    CommonPreferencesUtil.getString(EditSettingsActivity.CLICK_COUNT_KEY, "3100")
+                it.findViewById<ImageView>(R.id.ivClose).setOnClickListener {
+                    EasyFloat.dismiss()
+                }
+                it.findViewById<TextView>(R.id.openDouYin).setOnClickListener {
+                    checkAccessibilityServiceOn() {
+                        Thread { AnXinLiveRoomAutomaticLikesScript.doWrok() }.start()
+                    }
+                }
+                it.findViewById<TextView>(R.id.startClick).setOnClickListener {
+                    checkAccessibilityServiceOn() {
+                        try {
+                            val count = tvCount.text.toString().toInt()
+                            Thread { AnXinLiveRoomAutomaticLikesScript.doAction(count) }.start()
+                        } catch (e: Exception) {
+                            Thread { AnXinLiveRoomAutomaticLikesScript.doAction(3100) }.start()
+                        }
+                    }
+                }
+                it.findViewById<TextView>(R.id.stopClick).setOnClickListener {
+                    AnXinLiveRoomAutomaticLikesScript.runStatus = false
+                }
+            }
+            .registerCallback {
+                drag { _, motionEvent ->
+                    DragUtils.registerDragClose(motionEvent, object : OnTouchRangeListener {
+                        override fun touchInRange(inRange: Boolean, view: BaseSwitchView) {
+                            setVibrator(inRange)
+                            view.findViewById<TextView>(com.lzf.easyfloat.R.id.tv_delete).text =
+                                if (inRange) "松手删除" else "删除浮窗"
+
+                            view.findViewById<ImageView>(com.lzf.easyfloat.R.id.iv_delete)
+                                .setImageResource(
+                                    if (inRange) com.lzf.easyfloat.R.drawable.icon_delete_selected
+                                    else com.lzf.easyfloat.R.drawable.icon_delete_normal
+                                )
+                        }
+
+                        override fun touchUpInRange() {
+                            AnXinLiveRoomAutomaticLikesScript.runStatus = false
+                            EasyFloat.dismiss()
+                        }
+                    }, showPattern = ShowPattern.ALL_TIME)
+                }
+            }
+            .show()
+    }
+
+    fun checkAccessibilityServiceOn(callback: () -> Unit) {
+        if (ApiUtil.isAccessibilityServiceOn(
+                UiApplication.context,
+                MainAccessService::class.java
+            )
+        ) {
+            callback.invoke()
+        } else {
+            Toast.makeText(this@MainActivity, "请开启辅助功能", Toast.LENGTH_SHORT)
+                .show()
+            gotoAccessibilitySettings(this@MainActivity)
+        }
+    }
+
+    fun setVibrator(inRange: Boolean) {
+        if (!vibrator.hasVibrator() || (inRange && vibrating)) return
+        vibrating = inRange
+        if (inRange) if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            vibrator.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE))
+        } else vibrator.vibrate(100)
+        else vibrator.cancel()
+    }
+
     companion object {
         fun gotoAccessibilitySettings(context: Context): Boolean {
             val settingsIntent = Intent(

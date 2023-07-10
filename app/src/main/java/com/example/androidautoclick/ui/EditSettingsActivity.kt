@@ -11,11 +11,10 @@ import com.example.androidautoclick.ui.uitils.CommonPreferencesUtil
 import com.hjq.bar.OnTitleBarListener
 import com.hjq.bar.TitleBar
 import jp.wasabeef.blurry.Blurry
+import kotlinx.android.synthetic.main.activity_edittext_settings.clickCountEditText
 import kotlinx.android.synthetic.main.activity_edittext_settings.hostNameEditText
 import kotlinx.android.synthetic.main.activity_edittext_settings.ivBackground
-import kotlinx.android.synthetic.main.activity_edittext_settings.layout_edit
 import kotlinx.android.synthetic.main.activity_edittext_settings.mustEditText
-import kotlinx.android.synthetic.main.activity_edittext_settings.tvCurrentDesc
 import kotlinx.android.synthetic.main.activity_main.titleBar
 
 class EditSettingsActivity : AppCompatActivity() {
@@ -34,19 +33,20 @@ class EditSettingsActivity : AppCompatActivity() {
         })
         hostNameEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
             }
 
-            override fun afterTextChanged(p0: Editable?) {
+            override fun afterTextChanged(p0: Editable) {
                 var value = p0.toString()
                 if (value.isNullOrBlank() || "null" == value) {
-                    value = AnXinLiveRoomAutomaticLikesScript.defaultHostName
+                    value = ""
                 }
                 CommonPreferencesUtil.saveValue(HOST_NAME_KEY, value)
                 AnXinLiveRoomAutomaticLikesScript.hostName = "'${value}'"
-                updateCurrentDesc()
             }
         })
         mustEditText.addTextChangedListener(object : TextWatcher {
@@ -56,14 +56,28 @@ class EditSettingsActivity : AppCompatActivity() {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
 
-            override fun afterTextChanged(p0: Editable?) {
+            override fun afterTextChanged(p0: Editable) {
                 var value = p0.toString()
                 if (value.isNullOrBlank() || "null" == value) {
-                    value = AnXinLiveRoomAutomaticLikesScript.defaultMustConditions
+                    value = ""
                 }
                 CommonPreferencesUtil.saveValue(MUST_KEY, value)
                 AnXinLiveRoomAutomaticLikesScript.mustConditions = "'${value}'"
-                updateCurrentDesc()
+            }
+        })
+        clickCountEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun afterTextChanged(p0: Editable) {
+                var value = p0.toString()
+                if (value.isNullOrBlank() || "null" == value) {
+                    value = ""
+                }
+                CommonPreferencesUtil.saveValue(CLICK_COUNT_KEY, value)
             }
         })
     }
@@ -75,22 +89,34 @@ class EditSettingsActivity : AppCompatActivity() {
             .animate(500)
             .from(BitmapFactory.decodeResource(resources, R.drawable.img_anxin_shu))
             .into(ivBackground)
-        layout_edit.setLineColor(getColor(R.color.white))
-        updateCurrentDesc()
-    }
 
-    private fun updateCurrentDesc() {
         val currentHostName =
-            CommonPreferencesUtil.getString(HOST_NAME_KEY, AnXinLiveRoomAutomaticLikesScript.hostName)
+            CommonPreferencesUtil.getString(
+                EditSettingsActivity.HOST_NAME_KEY,
+                ""
+            )
         val currentMmustConditions =
-            CommonPreferencesUtil.getString(MUST_KEY, AnXinLiveRoomAutomaticLikesScript.mustConditions)
-        tvCurrentDesc.text =
-            "当前设置如下：\n抖音昵称：${currentHostName}\n判断直播间条件：${currentMmustConditions}\n"
+            CommonPreferencesUtil.getString(
+                EditSettingsActivity.MUST_KEY,
+                ""
+            )
+        val currentCount =
+            CommonPreferencesUtil.getString(
+                EditSettingsActivity.CLICK_COUNT_KEY,
+                ""
+            )
+        hostNameEditText.setText(currentHostName)
+        mustEditText.setText(currentMmustConditions)
+        clickCountEditText.setText(currentCount)
+
+        AnXinLiveRoomAutomaticLikesScript.hostName = currentHostName
+        AnXinLiveRoomAutomaticLikesScript.mustConditions = currentMmustConditions
     }
 
     companion object {
         val HOST_NAME_KEY = "host_name_key"
         val MUST_KEY = "must_key"
+        val CLICK_COUNT_KEY = "click_count_key"
         val OPTION_KEY = "option_key"
     }
 

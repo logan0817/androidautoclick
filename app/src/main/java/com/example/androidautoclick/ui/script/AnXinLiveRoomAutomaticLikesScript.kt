@@ -4,7 +4,6 @@ import com.auto.assist.accessibility.api.AcessibilityApi
 import com.auto.assist.accessibility.api.UiApi
 import com.auto.assist.accessibility.util.LogUtil
 import com.auto.assist.accessibility.util.Screen
-import com.example.androidautoclick.ui.MainAccessService
 import com.example.androidautoclick.ui.UiApplication
 import com.example.androidautoclick.ui.uitils.Utils
 
@@ -15,24 +14,28 @@ import com.example.androidautoclick.ui.uitils.Utils
  */
 object AnXinLiveRoomAutomaticLikesScript {
 
-    val defaultHostName: String = "'安欣✨音乐电台'"
+    val defaultHostName: String = "'安欣✨电台'"
     var hostName: String = defaultHostName
 
-    val defaultMustConditions: String = "'安欣✨音乐电台'"
+    val defaultMustConditions: String = "'安欣✨电台'"
     var mustConditions: String = defaultMustConditions
 
     val defaultOptionConditions: String = ""
     var optionConditions: String = defaultOptionConditions
 
+
+    var runStatus: Boolean = false
+
     fun doWrok() {
         //启动抖音
-        startTiktok()
-        if (goFollowList()) {
+        openTiktok()
+        if (hostName.isNullOrBlank()) {
+            LogUtil.D("没有设置hostName，打开抖音成功，结束")
+        } else if (goFollowList()) {
             if (goHostNameHomePage()) {
                 LogUtil.D("前往个人主页成功")
                 if (goLiveRoom()) {
-                    LogUtil.D("前往直播间成功")
-                    doAction()
+                    LogUtil.D("前往直播间成功，结束")
                 } else {
                     LogUtil.E("前往直播间异常,停止")
                 }
@@ -105,7 +108,8 @@ object AnXinLiveRoomAutomaticLikesScript {
         return true
     }
 
-    private fun doAction() {
+    fun doAction(count: Int) {
+        runStatus = true
         LogUtil.D("已到达抖音指定页面")
         val context = UiApplication.context
         val screenWidth = Screen.getScreenWidth(context)
@@ -114,7 +118,7 @@ object AnXinLiveRoomAutomaticLikesScript {
         val tempHeight = screenHeight / 2
         var tempCount = 0;
         while (true) {
-            if (isDouyinLiveRoomPage) {
+            if (mustConditions.isNullOrBlank() || isDouyinLiveRoomPage) {
                 // 生成1位随机数字
                 val random1 = (Math.random() * 9f + 1).toInt()
                 // 生成2位随机数字
@@ -126,9 +130,6 @@ object AnXinLiveRoomAutomaticLikesScript {
                     e.printStackTrace()
                 } finally {
                     tempCount++
-                    if (tempCount > 3200) {
-                        break
-                    }
                 }
             } else {
                 LogUtil.E("当前不在抖音指定页面,暂停操作 sleep 5s")
@@ -137,6 +138,15 @@ object AnXinLiveRoomAutomaticLikesScript {
                 } catch (e: InterruptedException) {
                     e.printStackTrace()
                 }
+            }
+
+            if (tempCount > count) {
+                LogUtil.D("到达指定数量$count，停止 break")
+                break
+            }
+            if (!runStatus) {
+                LogUtil.D("运行状态为停止$runStatus，停止 break")
+                break
             }
         }
     }
@@ -152,7 +162,7 @@ object AnXinLiveRoomAutomaticLikesScript {
             return UiApi.isMyNeedPage(pageStr)
         }
 
-    private fun startTiktok() {
+    private fun openTiktok() {
         //抖音
         val packageName = "com.ss.android.ugc.aweme"
         val exist = Utils.checkAppInstalled(UiApplication.context, packageName)

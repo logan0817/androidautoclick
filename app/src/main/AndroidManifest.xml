@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
-    <uses-permission
-        android:name="android.permission.QUERY_ALL_PACKAGES"
-        tools:ignore="QueryAllPackagesPermission" />
     <!--使用queries声明我们的应用期望与那些应用交互-->
     <queries>
         <package android:name="com.ss.android.ugc.aweme" />
     </queries>
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+    <!--系统悬浮窗权限-->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!--手机震动权限（EasyFloat不需要）-->
+    <uses-permission android:name="android.permission.VIBRATE" />
     <application
         android:name=".ui.UiApplication"
         android:allowBackup="true"
