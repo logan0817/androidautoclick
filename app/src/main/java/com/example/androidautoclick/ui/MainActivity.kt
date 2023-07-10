@@ -10,15 +10,19 @@ import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.provider.Settings
+import android.util.Log
 import android.view.Gravity
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.auto.assist.accessibility.util.ApiUtil
+import com.auto.assist.accessibility.util.Screen
 import com.example.androidautoclick.R
+import com.example.androidautoclick.ui.ScreenListener.ScreenStateListener
 import com.example.androidautoclick.ui.script.AnXinLiveRoomAutomaticLikesScript
 import com.example.androidautoclick.ui.uitils.CommonPreferencesUtil
+import com.example.androidautoclick.ui.uitils.DensityUtils
 import com.example.androidautoclick.ui.uitils.Utils
 import com.hjq.bar.OnTitleBarListener
 import com.hjq.bar.TitleBar
@@ -36,6 +40,7 @@ import kotlinx.android.synthetic.main.activity_main.ivBackground
 import kotlinx.android.synthetic.main.activity_main.llAccessibilityServiceStatus
 import kotlinx.android.synthetic.main.activity_main.titleBar
 import kotlinx.android.synthetic.main.activity_main.tvCurrentDesc
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var vibrator: Vibrator
@@ -82,6 +87,24 @@ class MainActivity : AppCompatActivity() {
         actionDouyin.setOnClickListener {
             checkPermission()
         }
+        val l = ScreenListener(this)
+
+        l.begin(object : ScreenStateListener {
+            override fun onUserPresent() {
+                Log.e("ScreenStateListener", "onUserPresent")
+                AnXinLiveRoomAutomaticLikesScript.runStatus = false
+            }
+
+            override fun onScreenOn() {
+                Log.e("ScreenStateListener", "onScreenOn")
+                AnXinLiveRoomAutomaticLikesScript.runStatus = false
+            }
+
+            override fun onScreenOff() {
+                Log.e("ScreenStateListener", "onScreenOff")
+                AnXinLiveRoomAutomaticLikesScript.runStatus = false
+            }
+        })
     }
 
     override fun onResume() {
@@ -112,7 +135,7 @@ class MainActivity : AppCompatActivity() {
                 "3100"
             )
         tvCurrentDesc.text =
-            "当前设置如下\n抖音昵称：${currentHostName}\n判断直播间条件：${currentMmustConditions}\n点击次数：${currentCount}\n"
+            "当前设置如下\n点击次数：${currentCount}\n抖音昵称：${currentHostName}\n判断直播间条件：${currentMmustConditions}\n"
     }
 
 
@@ -140,12 +163,13 @@ class MainActivity : AppCompatActivity() {
             .setShowPattern(ShowPattern.ALL_TIME)
             .setSidePattern(SidePattern.RESULT_SIDE)
             .setImmersionStatusBar(true)
-            .setGravity(Gravity.END, -20, 400)
+            .setGravity(Gravity.END, -20, DensityUtils.dp2px(600))
             .setLayout(R.layout.float_app) {
                 val tvCount = it.findViewById<TextView>(R.id.tvCount)
                 tvCount.text =
                     CommonPreferencesUtil.getString(EditSettingsActivity.CLICK_COUNT_KEY, "3100")
                 it.findViewById<ImageView>(R.id.ivClose).setOnClickListener {
+                    AnXinLiveRoomAutomaticLikesScript.runStatus = false
                     EasyFloat.dismiss()
                 }
                 it.findViewById<TextView>(R.id.openDouYin).setOnClickListener {

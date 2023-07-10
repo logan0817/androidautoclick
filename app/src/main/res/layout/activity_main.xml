@@ -98,7 +98,12 @@
         android:text="提示：
         \n1、抖音昵称空，只打开抖音不自动跳转到对应主页
         \n2、直播间判断条件空，那么直接任何页面都可以开始点击
-        \n3、点击次数空，默认点击连续3100次后停止"
+        \n3、点击次数空，默认点击连续3100次后停止
+        \n
+        \n*开启自动点击后，因为屏幕一直在被点击，所以停止按钮可能点击时候会点击无效，可以尝试连续点击停止按钮。
+        \n
+        \n停止点击事件方式：连续点击停止按钮，锁屏，关闭悬浮窗都可以停止该事件
+"
         android:textColor="@color/color_F8F0D6"
         android:textSize="13sp"
         app:layout_constraintBottom_toTopOf="@+id/tvCurrentDesc" />
@@ -120,7 +125,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/color_7B7C7D"
         android:gravity="center"
-        android:text="打开悬浮窗"
+        android:text="打开辅助模式并开启悬浮窗"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"

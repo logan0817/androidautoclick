@@ -17,7 +17,8 @@ object AnXinLiveRoomAutomaticLikesScript {
     val defaultHostName: String = "'安欣✨电台'"
     var hostName: String = defaultHostName
 
-    val defaultMustConditions: String = "'安欣✨电台'"
+//    val defaultMustConditions: String = "'安欣✨电台'"
+    val defaultMustConditions: String = ""
     var mustConditions: String = defaultMustConditions
 
     val defaultOptionConditions: String = ""

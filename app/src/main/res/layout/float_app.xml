@@ -25,19 +25,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="请输入点击次数"
-            android:padding="5dp"
             android:inputType="number"
+            android:padding="5dp"
             android:text="3100"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:textSize="12sp" />
     </LinearLayout>
 
-    <TextView
+    <Button
         android:id="@+id/openDouYin"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:layout_below="@+id/llCount"
+        android:backgroundTint="@color/color_5B5E63"
         android:padding="5dp"
         android:text="打开抖音"
         android:textColor="@color/white"
@@ -48,19 +49,21 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/openDouYin">
 
-        <TextView
+        <Button
             android:id="@+id/startClick"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
+            android:backgroundTint="@color/color_5B5E63"
             android:padding="5dp"
             android:text="开始点赞"
             android:textColor="@color/white"
             android:textSize="12sp" />
 
-        <TextView
+        <Button
             android:id="@+id/stopClick"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
+            android:backgroundTint="@color/color_5B5E63"
             android:padding="5dp"
             android:text="停止点赞"
             android:textColor="@color/white"
