@@ -47,7 +47,7 @@ class CoordinateActivity : AppCompatActivity() {
             .from(BitmapFactory.decodeResource(resources, R.drawable.img_anxin_shu))
             .into(ivBackground)
 
-        val userX = CommonPreferencesUtil.getFloat(CoordinateActivity.USER_IMG_X_KEY, 0F)
+    /*    val userX = CommonPreferencesUtil.getFloat(CoordinateActivity.USER_IMG_X_KEY, 0F)
         val userY = CommonPreferencesUtil.getFloat(CoordinateActivity.USER_IMG_X_KEY, 0F)
         if (userX == 0F || userY == 0F) {
             val context = UiApplication.context
@@ -62,7 +62,7 @@ class CoordinateActivity : AppCompatActivity() {
             myDrawLineView.x1 = userX
             myDrawLineView.y1 = userY
             myDrawLineView.invalidate()
-        }
+        }*/
         val setingsLikeX = CommonPreferencesUtil.getFloat(CoordinateActivity.CLICK_LIKE_X_KEY, 0F)
         val setingsLikeY = CommonPreferencesUtil.getFloat(CoordinateActivity.CLICK_LIKE_Y_KEY, 0F)
         if (setingsLikeX == 0F || setingsLikeY == 0F) {

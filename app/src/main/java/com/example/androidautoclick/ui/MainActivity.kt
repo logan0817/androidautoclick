@@ -76,7 +76,8 @@ class MainActivity : AppCompatActivity() {
     private fun setListener() {
         titleBar.setOnTitleBarListener(object : OnTitleBarListener {
             override fun onRightClick(titleBar: TitleBar?) {
-                startActivity(Intent(this@MainActivity, PinLockActivity::class.java))
+                startActivity(Intent(this@MainActivity, EditSettingsActivity::class.java))
+//                startActivity(Intent(this@MainActivity, PinLockActivity::class.java))
             }
         })
 
@@ -133,8 +134,8 @@ class MainActivity : AppCompatActivity() {
                 EditSettingsActivity.CLICK_COUNT_KEY,
                 "3100"
             )
-        tvCurrentDesc.text =
-            "当前设置如下\n点击次数：${currentCount}\n抖音昵称：${currentHostName}\n判断直播间条件：${currentMmustConditions}\n"
+//        tvCurrentDesc.text = "当前设置如下\n点击次数：${currentCount}\n抖音昵称：${currentHostName}\n判断直播间条件：${currentMmustConditions}\n"
+        tvCurrentDesc.text = "当前设置如下\n点击次数：${currentCount}\n"
     }
 
 
@@ -174,10 +175,9 @@ class MainActivity : AppCompatActivity() {
                 it.findViewById<TextView>(R.id.openDouYin).setOnClickListener {
                     checkAccessibilityServiceOn() {
                         try {
-                            val count = tvCount.text.toString().toInt()
-                            Thread { AnXinLiveRoomAutomaticLikesScript.doWrok(count) }.start()
+                            Thread { AnXinLiveRoomAutomaticLikesScript.openTiktok() }.start()
                         } catch (e: Exception) {
-                            Thread { AnXinLiveRoomAutomaticLikesScript.doWrok(3100) }.start()
+                            Thread { AnXinLiveRoomAutomaticLikesScript.openTiktok() }.start()
                         }
 
                     }

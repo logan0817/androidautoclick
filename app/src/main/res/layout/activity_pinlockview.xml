@@ -48,17 +48,4 @@
             app:plv_hitColor="@color/color_FF9041" />
 
     </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:text="解锁后删除所有设置内容，可以给任何人点赞"
-        android:textColor="@color/color_F8F0D6"
-        android:textSize="14sp" />
 </RelativeLayout>

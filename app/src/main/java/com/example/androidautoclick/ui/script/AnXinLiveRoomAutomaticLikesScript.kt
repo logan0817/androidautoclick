@@ -136,10 +136,13 @@ object AnXinLiveRoomAutomaticLikesScript {
                 val random1 = (Math.random() * 9f + 1).toInt()
                 // 生成2位随机数字
                 val random2 = ((Math.random() * 9f + 1) * 10).toInt()
-                if (setingsLikeX==0F||setingsLikeY==0F){
+                if (setingsLikeX == 0F || setingsLikeY == 0F) {
                     AcessibilityApi.click(tempWidth + random2, tempHeight - random1)
-                }else{
-                    AcessibilityApi.click((setingsLikeX + random2).toInt(), (setingsLikeY - random1).toInt())
+                } else {
+                    AcessibilityApi.click(
+                        (setingsLikeX + random2).toInt(),
+                        (setingsLikeY - random1).toInt()
+                    )
                 }
                 try {
                     Thread.sleep((15 * random1).toLong())
@@ -175,7 +178,7 @@ object AnXinLiveRoomAutomaticLikesScript {
             return UiApi.isMyNeedPage(pageStr)
         }
 
-    private fun openTiktok() {
+    fun openTiktok() {
         //抖音
         val packageName = "com.ss.android.ugc.aweme"
         val exist = Utils.checkAppInstalled(UiApplication.context, packageName)
