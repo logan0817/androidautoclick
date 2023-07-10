@@ -17,7 +17,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.auto.assist.accessibility.util.ApiUtil
-import com.auto.assist.accessibility.util.Screen
 import com.example.androidautoclick.R
 import com.example.androidautoclick.ui.ScreenListener.ScreenStateListener
 import com.example.androidautoclick.ui.script.AnXinLiveRoomAutomaticLikesScript
@@ -174,7 +173,13 @@ class MainActivity : AppCompatActivity() {
                 }
                 it.findViewById<TextView>(R.id.openDouYin).setOnClickListener {
                     checkAccessibilityServiceOn() {
-                        Thread { AnXinLiveRoomAutomaticLikesScript.doWrok() }.start()
+                        try {
+                            val count = tvCount.text.toString().toInt()
+                            Thread { AnXinLiveRoomAutomaticLikesScript.doWrok(count) }.start()
+                        } catch (e: Exception) {
+                            Thread { AnXinLiveRoomAutomaticLikesScript.doWrok(3100) }.start()
+                        }
+
                     }
                 }
                 it.findViewById<TextView>(R.id.startClick).setOnClickListener {

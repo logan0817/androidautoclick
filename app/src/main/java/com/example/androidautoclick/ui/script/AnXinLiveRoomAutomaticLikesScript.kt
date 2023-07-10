@@ -4,7 +4,9 @@ import com.auto.assist.accessibility.api.AcessibilityApi
 import com.auto.assist.accessibility.api.UiApi
 import com.auto.assist.accessibility.util.LogUtil
 import com.auto.assist.accessibility.util.Screen
+import com.example.androidautoclick.ui.CoordinateActivity
 import com.example.androidautoclick.ui.UiApplication
+import com.example.androidautoclick.ui.uitils.CommonPreferencesUtil
 import com.example.androidautoclick.ui.uitils.Utils
 
 /**
@@ -17,7 +19,7 @@ object AnXinLiveRoomAutomaticLikesScript {
     val defaultHostName: String = "'安欣✨电台'"
     var hostName: String = defaultHostName
 
-//    val defaultMustConditions: String = "'安欣✨电台'"
+    //    val defaultMustConditions: String = "'安欣✨电台'"
     val defaultMustConditions: String = ""
     var mustConditions: String = defaultMustConditions
 
@@ -27,7 +29,7 @@ object AnXinLiveRoomAutomaticLikesScript {
 
     var runStatus: Boolean = false
 
-    fun doWrok() {
+    fun doWrok(count: Int) {
         //启动抖音
         openTiktok()
         if (hostName.isNullOrBlank()) {
@@ -36,7 +38,8 @@ object AnXinLiveRoomAutomaticLikesScript {
             if (goHostNameHomePage()) {
                 LogUtil.D("前往个人主页成功")
                 if (goLiveRoom()) {
-                    LogUtil.D("前往直播间成功，结束")
+                    LogUtil.D("前往直播间成功，开始点击")
+                    doAction(count)
                 } else {
                     LogUtil.E("前往直播间异常,停止")
                 }
@@ -96,11 +99,18 @@ object AnXinLiveRoomAutomaticLikesScript {
         } catch (e: InterruptedException) {
             e.printStackTrace()
         }
-        val context = UiApplication.context
-        val screenWidth = Screen.getScreenWidth(context)
-        val screenHeight = Screen.getScreenHeight(context)
-        //点击头像
-        AcessibilityApi.click(screenWidth / 5, (screenHeight / 5F).toInt())
+        val userX = CommonPreferencesUtil.getFloat(CoordinateActivity.USER_IMG_X_KEY, 0F)
+        val userY = CommonPreferencesUtil.getFloat(CoordinateActivity.USER_IMG_X_KEY, 0F)
+        if (userX == 0F || userY == 0F) {
+            //点击头像设置坐标点
+            AcessibilityApi.click(userX.toInt(), userY.toInt())
+        } else {
+            val context = UiApplication.context
+            val screenWidth = Screen.getScreenWidth(context)
+            val screenHeight = Screen.getScreenHeight(context)
+            //点击头像
+            AcessibilityApi.click((screenWidth * 0.18F).toInt(), (screenHeight * 0.245).toInt())
+        }
         try {
             Thread.sleep(1000)
         } catch (e: InterruptedException) {
@@ -115,8 +125,10 @@ object AnXinLiveRoomAutomaticLikesScript {
         val context = UiApplication.context
         val screenWidth = Screen.getScreenWidth(context)
         val screenHeight = Screen.getScreenHeight(context)
-        val tempWidth = screenWidth / 2
-        val tempHeight = screenHeight / 2
+        val tempWidth = (screenWidth * 0.5F).toInt()
+        val tempHeight = (screenHeight * 0.38F).toInt()
+        val setingsLikeX = CommonPreferencesUtil.getFloat(CoordinateActivity.CLICK_LIKE_X_KEY, 0F)
+        val setingsLikeY = CommonPreferencesUtil.getFloat(CoordinateActivity.CLICK_LIKE_Y_KEY, 0F)
         var tempCount = 0;
         while (true) {
             if (mustConditions.isNullOrBlank() || isDouyinLiveRoomPage) {
@@ -124,7 +136,11 @@ object AnXinLiveRoomAutomaticLikesScript {
                 val random1 = (Math.random() * 9f + 1).toInt()
                 // 生成2位随机数字
                 val random2 = ((Math.random() * 9f + 1) * 10).toInt()
-                AcessibilityApi.click(tempWidth + random2, tempHeight - random1)
+                if (setingsLikeX==0F||setingsLikeY==0F){
+                    AcessibilityApi.click(tempWidth + random2, tempHeight - random1)
+                }else{
+                    AcessibilityApi.click((setingsLikeX + random2).toInt(), (setingsLikeY - random1).toInt())
+                }
                 try {
                     Thread.sleep((15 * random1).toLong())
                 } catch (e: InterruptedException) {
@@ -133,12 +149,8 @@ object AnXinLiveRoomAutomaticLikesScript {
                     tempCount++
                 }
             } else {
-                LogUtil.E("当前不在抖音指定页面,暂停操作 sleep 5s")
-                try {
-                    Thread.sleep(5000)
-                } catch (e: InterruptedException) {
-                    e.printStackTrace()
-                }
+                LogUtil.E("当前不在抖音指定页面,停止 break")
+                break
             }
 
             if (tempCount > count) {

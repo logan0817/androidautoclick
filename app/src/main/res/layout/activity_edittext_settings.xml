@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <ImageView
         android:id="@+id/ivBackground"
         android:layout_width="match_parent"
@@ -175,6 +174,14 @@
         \n3、点击次数空，默认点击连续3100次后停止"
         android:textColor="@color/color_F8F0D6"
         android:textSize="13sp"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/btnCoordinate" />
 
+    <Button
+        android:id="@+id/btnCoordinate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/color_7B7C7D"
+        android:text="设置点击坐标点"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

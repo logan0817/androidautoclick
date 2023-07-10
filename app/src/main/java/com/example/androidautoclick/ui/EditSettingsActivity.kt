@@ -1,5 +1,6 @@
 package com.example.androidautoclick.ui
 
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.text.Editable
@@ -11,6 +12,7 @@ import com.example.androidautoclick.ui.uitils.CommonPreferencesUtil
 import com.hjq.bar.OnTitleBarListener
 import com.hjq.bar.TitleBar
 import jp.wasabeef.blurry.Blurry
+import kotlinx.android.synthetic.main.activity_edittext_settings.btnCoordinate
 import kotlinx.android.synthetic.main.activity_edittext_settings.clickCountEditText
 import kotlinx.android.synthetic.main.activity_edittext_settings.hostNameEditText
 import kotlinx.android.synthetic.main.activity_edittext_settings.ivBackground
@@ -31,6 +33,9 @@ class EditSettingsActivity : AppCompatActivity() {
                 finish()
             }
         })
+        btnCoordinate.setOnClickListener {
+            startActivity(Intent(this, CoordinateActivity::class.java))
+        }
         hostNameEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 

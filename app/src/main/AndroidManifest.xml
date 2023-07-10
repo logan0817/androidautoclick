@@ -35,6 +35,7 @@
 
         <activity android:name=".ui.PinLockActivity"></activity>
         <activity android:name=".ui.EditSettingsActivity"></activity>
+        <activity android:name=".ui.CoordinateActivity"></activity>
         <service
             android:name=".ui.MainAccessService"
             android:exported="true"
