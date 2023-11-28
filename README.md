@@ -17,7 +17,7 @@
 
 ![image](https://github.com/notwalnu/androidautoclick/assets/19951960/4db8f03b-4018-4201-8af5-3de6fcd0c5bc)
 
-## 参考：如果不会使用请查看使用视频-> [点击查看视频](https://github.com/notwalnu/androidautoclick/blob/main/demo/demp.mp4)
+## 参考：如果不会使用请查看使用视频-> [点击查看视频](https://foreo-app.oss-cn-beijing.aliyuncs.com/demo.mp4)
 
 ## 屏幕截图
 <img src="demo/demo1.jpg" width="30%"/><img src="demo/demo2.jpg" width="30%"/><img src="demo/demo3.jpg" width="30%"/>
@@ -63,7 +63,7 @@
 
 ![image](https://github.com/notwalnu/androidautoclick/assets/19951960/4db8f03b-4018-4201-8af5-3de6fcd0c5bc)
 
-## Reference: If you don't know how to use it, please refer to the usage video -> [Click to view video](https://github.com/notwalnu/androidautoclick/blob/main/demo/demp.mp4)
+## Reference: If you don't know how to use it, please refer to the usage video -> [Click to view video](https://foreo-app.oss-cn-beijing.aliyuncs.com/demo.mp4)
 
 ## ScreenShot
 <img src="demo/demo1.jpg" width="30%"/><img src="demo/demo2.jpg" width="30%"/><img src="demo/demo3.jpg" width="30%"/>
