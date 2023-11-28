@@ -41,7 +41,7 @@
 
 
 
-## The specific logic of the default like jump script is in this class: [AnXinLiveRoomAutomaticLikesScript. kt]（app\src\main\java\com\example\androidautoclick\ui\script\AnXinLiveRoomAutomaticLikesScript.kt）
+## The specific logic of the default like jump script is in this class: [AnXinLiveRoomAutomaticLikesScript.kt](app/src/main/java/com/example/androidautoclick/ui/script/AnXinLiveRoomAutomaticLikesScript.kt)
 
 
 
