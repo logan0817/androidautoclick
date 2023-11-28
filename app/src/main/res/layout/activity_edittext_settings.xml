@@ -171,7 +171,7 @@
         android:lineSpacingMultiplier="1.3"
         android:padding="20dp"
         android:text="提示：
-        \n1、点击次数空，默认点击连续3100次后停止"
+        \n1、点击次数空，默认点击连续3100次后停止\n2、输入完自动保存后"
         android:textColor="@color/color_F8F0D6"
         android:textSize="13sp"
         app:layout_constraintBottom_toTopOf="@+id/btnCoordinate" />
@@ -181,7 +181,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/color_7B7C7D"
-        android:text="设置点击坐标点"
+        android:text="去设置点击坐标点"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

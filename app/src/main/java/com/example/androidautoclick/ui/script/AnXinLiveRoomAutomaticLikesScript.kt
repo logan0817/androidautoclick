@@ -145,7 +145,8 @@ object AnXinLiveRoomAutomaticLikesScript {
                     )
                 }
                 try {
-                    Thread.sleep((15 * random1).toLong())
+//                    Thread.sleep((15 * random1).toLong())
+                    Thread.sleep((150 + 3 * random1).toLong())
                 } catch (e: InterruptedException) {
                     e.printStackTrace()
                 } finally {

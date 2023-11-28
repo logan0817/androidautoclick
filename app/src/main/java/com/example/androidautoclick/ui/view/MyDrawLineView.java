@@ -10,6 +10,7 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
+import com.example.androidautoclick.R;
 import com.example.androidautoclick.ui.uitils.DensityUtils;
 
 public class MyDrawLineView extends View {
@@ -39,8 +40,8 @@ public class MyDrawLineView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        drawCenterLineX(canvas, x0, getHeight(), Color.BLUE);
-        drawCenterLineY(canvas, y0, getWidth(), Color.BLUE);
+        drawCenterLineX(canvas, x0, getHeight(), getContext().getColor(R.color.blue));
+        drawCenterLineY(canvas, y0, getWidth(), getContext().getColor(R.color.blue));
 
         drawCenterLineX(canvas, x1, getHeight(), Color.BLACK);
         drawCenterLineY(canvas, y1, getWidth(), Color.BLACK);
