@@ -2,8 +2,9 @@
 # androidAutoClick 该项目为打开抖音自动去往直播间点赞（3000+）
 ## 使用：
 * 1、先打开app辅助模式：然后点击跳转到抖音
-* 2、打开抖音后，自动跳转流程如下：直接打开抖音->我->关注->主播个人信息页面->点击头像->连续点赞3000+
-  
+* 2、打开抖音后，点击开始点赞，连续点赞3000+
+* 3、注意因为软件一直连续点击屏幕，所以取消停止点赞按钮可能点击不生效，所以可以连续点击停止按钮五次以上，或者锁屏都会停止点赞。
+
 ## 默认点赞跳转脚本具体逻辑在该类：[AnXinLiveRoomAutomaticLikesScript.kt](https://github.com/notwalnu/androidautoclick/blob/main/app/src/main/java/com/example/androidautoclick/ui/script/AnXinLiveRoomAutomaticLikesScript.kt)
 
 ### 需要自己打开什么软件【抖Y,快S】？做什么事情，参考该类自己改。
@@ -16,46 +17,54 @@
 
 ![image](https://github.com/notwalnu/androidautoclick/assets/19951960/4db8f03b-4018-4201-8af5-3de6fcd0c5bc)
 
+## 屏幕截图
+<img src="demo/demo1.jpg" width="30%"/><img src="demo/demo2.jpg" width="30%"/><img src="demo/demo3.jpg" width="30%"/>
+<br></br>
 
 这是一个非常简单的小小小项目，开源给大家学习和玩耍。
-
+<br></br>
 
 
 # -------------------------English-------------------------
 
-#AndroidAutoClick This project automatically likes the live broadcast room for opening Tiktok (3000+)
+# AndroidAutoClick This project automatically likes the live broadcast room for opening Tiktok (3000+)
 
-##Usage:
+## Usage:
 
-*1. First open the app auxiliary mode: then click to jump to Tiktok
+* 1、First open the app auxiliary mode: then click to jump to Tiktok
 
-*2. After turning on Tiktok, the automatic jump process is as follows: directly turn on Tiktok ->I ->Follow ->Anchor's personal information page ->click on the avatar ->like 3000 consecutively+
+* 2、After turning on Tiktok, click Start Like to like 3000 consecutive times+
 
-
-
-##The specific logic of the default likes jump script is in this class: [AnXinLiveRoomAutomaticLikesScript. kt]（ https://github.com/notwalnu/androidautoclick/blob/main/app/src/main/java/com/example/androidautoclick/ui/script/AnXinLiveRoomAutomaticLikesScript.kt ）
+* 3、Note that because the software keeps continuously clicking on the screen, the cancel stop like button may not take effect. Therefore, you can click the stop button more than five times in a row, or lock the screen to stop liking.
 
 
 
-###What software do you need to open on your own? What to do, refer to the category and make your own changes.
+## The specific logic of the default like jump script is in this class: [AnXinLiveRoomAutomaticLikesScript. kt]（ https://github.com/notwalnu/androidautoclick/blob/main/app/src/main/java/com/example/androidautoclick/ui/script/AnXinLiveRoomAutomaticLikesScript.kt ）
 
 
 
-##Demo APK Download
+### What software do you need to open on your own? What to do, refer to the category and make your own changes.
 
 
 
-[Github download link]（ https://github.com/notwalnu/androidautoclick/blob/main/demo/app-debug.apk ）
+## Demo APK Download
 
 
 
-[Domestic APK download link]（ https://tt.appc02.com/zxvlew ）
+[Github download link](https://github.com/notwalnu/androidautoclick/blob/main/demo/app-debug.apk)
 
 
 
-! [image]（ https://github.com/notwalnu/androidautoclick/assets/19951960/4db8f03b-4018-4201-8af5-3de6fcd0c5bc ）
+[Domestic APK download link](https://tt.appc02.com/zxvlew)
 
 
 
+![image](https://github.com/notwalnu/androidautoclick/assets/19951960/4db8f03b-4018-4201-8af5-3de6fcd0c5bc)
 
-This is a very simple small project, open source for everyone to learn and play.
+
+## ScreenShot
+<img src="demo/demo1.jpg" width="30%"/><img src="demo/demo2.jpg" width="30%"/><img src="demo/demo3.jpg" width="30%"/>
+<br></br>
+
+
+This is a very simple small project, open source for everyone to learn and play with.
