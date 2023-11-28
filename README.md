@@ -13,7 +13,7 @@
 
 [github下载链接](https://github.com/notwalnu/androidautoclick/blob/main/demo/app-debug.apk)
 
-[国内 apk下载链接](https://tt.appc02.com/zxvlew)
+[国内 apk下载链接](https://fir.xcxwo.com/zxvlew)
 
 ![image](https://github.com/notwalnu/androidautoclick/assets/19951960/4db8f03b-4018-4201-8af5-3de6fcd0c5bc)
 
@@ -57,7 +57,7 @@
 
 
 
-[Domestic APK download link](https://tt.appc02.com/zxvlew)
+[Domestic APK download link](https://fir.xcxwo.com/zxvlew)
 
 
 
