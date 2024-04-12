@@ -1,4 +1,4 @@
-package com.example.androidautoclick
+package com.logan.androidautoclick
 
 import org.junit.Test
 

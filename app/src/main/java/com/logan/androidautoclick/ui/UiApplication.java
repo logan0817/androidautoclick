@@ -1,11 +1,9 @@
-package com.example.androidautoclick.ui;
+package com.logan.androidautoclick.ui;
 
 import android.app.Application;
 import android.content.Context;
 
-import com.example.androidautoclick.ui.uitils.CommonPreferencesUtil;
-import com.hjq.bar.ITitleBarStyle;
-import com.hjq.bar.TitleBar;
+import com.logan.androidautoclick.ui.uitils.CommonPreferencesUtil;
 
 public class UiApplication extends Application
 {

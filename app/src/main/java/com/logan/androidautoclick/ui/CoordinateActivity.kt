@@ -1,19 +1,17 @@
-package com.example.androidautoclick.ui
+package com.logan.androidautoclick.ui
 
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.auto.assist.accessibility.api.AcessibilityApi
 import com.auto.assist.accessibility.util.Screen
-import com.example.androidautoclick.R
-import com.example.androidautoclick.ui.uitils.CommonPreferencesUtil
+import com.logan.androidautoclick.R
+import com.logan.androidautoclick.ui.uitils.CommonPreferencesUtil
 import jp.wasabeef.blurry.Blurry
 import kotlinx.android.synthetic.main.activity_coordinate_settings.btnSave1
 import kotlinx.android.synthetic.main.activity_coordinate_settings.btnSave2
 import kotlinx.android.synthetic.main.activity_coordinate_settings.ivBackground
 import kotlinx.android.synthetic.main.activity_coordinate_settings.myDrawLineView
 
-class CoordinateActivity : AppCompatActivity() {
+class CoordinateActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_coordinate_settings)

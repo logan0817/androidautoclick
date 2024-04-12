@@ -1,4 +1,4 @@
-package com.example.androidautoclick.ui;
+package com.logan.androidautoclick.ui;
 
 import android.view.accessibility.AccessibilityEvent;
 

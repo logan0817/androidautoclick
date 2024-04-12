@@ -1,4 +1,4 @@
-package com.example.androidautoclick.ui.view;
+package com.logan.androidautoclick.ui.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -10,8 +10,7 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-import com.example.androidautoclick.R;
-import com.example.androidautoclick.ui.uitils.DensityUtils;
+import com.logan.androidautoclick.R;
 
 public class MyDrawLineView extends View {
 
@@ -49,6 +48,18 @@ public class MyDrawLineView extends View {
         drawCenterLineY(canvas, y2, getWidth(), Color.WHITE);
 
 
+        drawSpot(canvas, x0, y0, 20, getContext().getColor(R.color.blue));
+        drawSpot(canvas, x2, y2, 20, Color.WHITE);
+
+
+    }
+
+    private void drawSpot(Canvas canvas, float cx, float cy, int radius, int clolor) {
+        Paint paint = new Paint();
+        paint.setStyle(Paint.Style.FILL);
+        paint.setColor(clolor);
+        paint.setStrokeWidth(2);
+        canvas.drawCircle(cx, cy, radius, paint);
     }
 
     @Override

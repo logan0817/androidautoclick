@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
     <ImageView
         android:id="@+id/ivBackground"
@@ -15,11 +16,11 @@
         android:id="@+id/titleBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
+        app:barStyle="transparent"
         app:layout_constraintTop_toTopOf="parent"
-        app:leftIconTint="@color/color_F8F0D6"
+        app:leftIconTint="@color/white"
         app:title="设置"
-        app:titleColor="@color/color_F8F0D6" />
+        app:titleColor="@color/white" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,7 +54,7 @@
                     android:hint="抖音昵称"
                     android:imeOptions="actionNext"
                     android:singleLine="true"
-                    android:textColor="@color/color_F8F0D6"
+                    android:textColor="@color/purple_200"
                     android:textSize="16sp" />
 
                 <EditText
@@ -65,7 +66,7 @@
                     android:hint="请输入"
                     android:imeOptions="actionNext"
                     android:singleLine="true"
-                    android:textColor="@color/color_F8F0D6"
+                    android:textColor="@color/purple_200"
                     android:textColorHint="@color/titleColor"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -97,7 +98,7 @@
                     android:hint="判断是否在直播间条件"
                     android:imeOptions="actionNext"
                     android:singleLine="true"
-                    android:textColor="@color/color_F8F0D6"
+                    android:textColor="@color/purple_200"
                     android:textSize="16sp" />
 
                 <EditText
@@ -109,7 +110,7 @@
                     android:hint="请输入"
                     android:imeOptions="actionNext"
                     android:singleLine="true"
-                    android:textColor="@color/color_F8F0D6"
+                    android:textColor="@color/purple_200"
                     android:textColorHint="@color/titleColor"
                     android:textSize="16sp" />
 
@@ -135,16 +136,13 @@
                 android:layout_centerVertical="true">
 
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/mustEditText"
                     android:background="@null"
-                    android:hint="点击次数"
-                    android:imeOptions="actionNext"
-                    android:inputType="number"
-                    android:singleLine="true"
-                    android:textColor="@color/color_F8F0D6"
+                    android:text="点击次数"
+                    android:textColor="@color/white"
                     android:textSize="16sp" />
 
                 <EditText
@@ -157,8 +155,8 @@
                     android:imeOptions="actionNext"
                     android:inputType="number"
                     android:singleLine="true"
-                    android:textColor="@color/color_F8F0D6"
-                    android:textColorHint="@color/titleColor"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/progressBgColor"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -172,7 +170,7 @@
         android:padding="20dp"
         android:text="提示：
         \n1、点击次数空，默认点击连续3100次后停止\n2、输入完后自动保存"
-        android:textColor="@color/color_F8F0D6"
+        android:textColor="@color/purple_200"
         android:textSize="13sp"
         app:layout_constraintBottom_toTopOf="@+id/btnCoordinate" />
 
@@ -180,8 +178,9 @@
         android:id="@+id/btnCoordinate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/color_7B7C7D"
+        android:backgroundTint="@color/color_283B5B"
         android:text="去设置点击坐标点"
         android:textColor="@color/white"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

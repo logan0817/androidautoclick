@@ -1,4 +1,4 @@
-package com.example.androidautoclick.ui.uitils
+package com.logan.androidautoclick.ui.uitils
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken

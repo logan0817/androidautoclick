@@ -1,14 +1,13 @@
-package com.example.androidautoclick.ui
+package com.logan.androidautoclick.ui
 
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.appcompat.app.AppCompatActivity
-import com.example.androidautoclick.R
-import com.example.androidautoclick.ui.script.AnXinLiveRoomAutomaticLikesScript
-import com.example.androidautoclick.ui.uitils.CommonPreferencesUtil
+import com.logan.androidautoclick.R
+import com.logan.androidautoclick.ui.script.AnXinLiveRoomAutomaticLikesScript
+import com.logan.androidautoclick.ui.uitils.CommonPreferencesUtil
 import com.hjq.bar.OnTitleBarListener
 import com.hjq.bar.TitleBar
 import jp.wasabeef.blurry.Blurry
@@ -19,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_edittext_settings.ivBackground
 import kotlinx.android.synthetic.main.activity_edittext_settings.mustEditText
 import kotlinx.android.synthetic.main.activity_main.titleBar
 
-class EditSettingsActivity : AppCompatActivity() {
+class EditSettingsActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edittext_settings)

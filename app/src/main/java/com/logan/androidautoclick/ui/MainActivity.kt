@@ -1,11 +1,11 @@
-package com.example.androidautoclick.ui
+package com.logan.androidautoclick.ui
 
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
-import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
@@ -15,33 +15,34 @@ import android.view.Gravity
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.auto.assist.accessibility.util.ApiUtil
-import com.example.androidautoclick.R
-import com.example.androidautoclick.ui.ScreenListener.ScreenStateListener
-import com.example.androidautoclick.ui.script.AnXinLiveRoomAutomaticLikesScript
-import com.example.androidautoclick.ui.uitils.CommonPreferencesUtil
-import com.example.androidautoclick.ui.uitils.DensityUtils
-import com.example.androidautoclick.ui.uitils.Utils
-import com.hjq.bar.OnTitleBarListener
-import com.hjq.bar.TitleBar
+import com.auto.assist.accessibility.util.Screen
+import com.logan.androidautoclick.R
+import com.logan.androidautoclick.ui.ScreenListener.ScreenStateListener
+import com.logan.androidautoclick.ui.script.AnXinLiveRoomAutomaticLikesScript
+import com.logan.androidautoclick.ui.uitils.CommonPreferencesUtil
+import com.logan.androidautoclick.ui.uitils.DensityUtils
+import com.logan.androidautoclick.ui.uitils.Utils
 import com.lzf.easyfloat.EasyFloat
 import com.lzf.easyfloat.enums.ShowPattern
 import com.lzf.easyfloat.enums.SidePattern
+import com.lzf.easyfloat.interfaces.OnPermissionResult
 import com.lzf.easyfloat.interfaces.OnTouchRangeListener
 import com.lzf.easyfloat.permission.PermissionUtils
 import com.lzf.easyfloat.utils.DragUtils
 import com.lzf.easyfloat.widget.BaseSwitchView
-import jp.wasabeef.blurry.Blurry
-import kotlinx.android.synthetic.main.activity_main.accessibilityServiceStatus
-import kotlinx.android.synthetic.main.activity_main.actionDouyin
-import kotlinx.android.synthetic.main.activity_main.ivBackground
-import kotlinx.android.synthetic.main.activity_main.llAccessibilityServiceStatus
-import kotlinx.android.synthetic.main.activity_main.titleBar
-import kotlinx.android.synthetic.main.activity_main.tvCurrentDesc
+import kotlinx.android.synthetic.main.activity_main.accessibilityServiceStatusSwitch
+import kotlinx.android.synthetic.main.activity_main.actionStart
+import kotlinx.android.synthetic.main.activity_main.clickAppShareBtn
+import kotlinx.android.synthetic.main.activity_main.clickCoordinateBtn
+import kotlinx.android.synthetic.main.activity_main.clickNumberBtn
+import kotlinx.android.synthetic.main.activity_main.floatingWindowSwitch
+import kotlinx.android.synthetic.main.activity_main.tvClickCoordinateBtnTitle
+import kotlinx.android.synthetic.main.activity_main.tvClickNumberBtnTitle
+import kotlinx.android.synthetic.main.activity_main.userGuideBtn
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     private lateinit var vibrator: Vibrator
     private var vibrating = false
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,27 +67,68 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun initView() {
-        Blurry.with(ivBackground.context)
-            .sampling(3)
-            .animate(500)
-            .from(BitmapFactory.decodeResource(resources, R.drawable.img_anxin_shu))
-            .into(ivBackground)
+        /*        Blurry.with(ivBackground.context)
+                    .sampling(3)
+                    .animate(500)
+                    .from(BitmapFactory.decodeResource(resources, R.drawable.img_anxin_shu))
+                    .into(ivBackground)*/
     }
 
     private fun setListener() {
-        titleBar.setOnTitleBarListener(object : OnTitleBarListener {
-            override fun onRightClick(titleBar: TitleBar?) {
-                startActivity(Intent(this@MainActivity, EditSettingsActivity::class.java))
-//                startActivity(Intent(this@MainActivity, PinLockActivity::class.java))
+        clickNumberBtn.setOnClickListener {
+            startActivity(Intent(this@MainActivity, EditSettingsActivity::class.java))
+        }
+        clickCoordinateBtn.setOnClickListener {
+            startActivity(Intent(this, CoordinateActivity::class.java))
+        }
+        userGuideBtn.setOnClickListener {
+            val url = "https://easylink.cc/ow94ck"
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            startActivity(intent)
+        }
+        clickAppShareBtn.setOnClickListener {
+            val url = "https://fir.xcxwo.com/xjg"
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            startActivity(intent)
+        }
+        /*  llAccessibilityServiceStatus.setOnClickListener {
+              gotoAccessibilitySettings(this@MainActivity)
+          }*/
+        actionStart.setOnClickListener {
+            if (PermissionUtils.checkPermission(this)) {
+                checkAccessibilityServiceOn() {
+                    showAppFloat()
+                }
+            } else {
+                AlertDialog.Builder(this)
+                    .setMessage("请检查（无障碍辅助模式）和（悬浮窗权限）是否开启?")
+                    .setNegativeButton("确定") { _, _ -> }
+                    .show()
             }
-        })
-
-        llAccessibilityServiceStatus.setOnClickListener {
-            gotoAccessibilitySettings(this@MainActivity)
         }
-        actionDouyin.setOnClickListener {
-            checkPermission()
-        }
+        /*  actionStart.setOnClickListener {
+              if (PermissionUtils.checkPermission(this)) {
+                  checkAccessibilityServiceOn() {
+                      showAppFloat()
+                  }
+              } else {
+                  AlertDialog.Builder(this)
+                      .setMessage("使用浮窗功能，需要您授权悬浮窗权限。")
+                      .setPositiveButton("去开启") { _, _ ->
+                          PermissionUtils.requestPermission(this, object : OnPermissionResult {
+                              override fun permissionResult(isOpen: Boolean) {
+                                  if (isOpen) {
+                                      checkAccessibilityServiceOn() {
+                                          showAppFloat()
+                                      }
+                                  }
+                              }
+                          })
+                      }
+                      .setNegativeButton("取消") { _, _ -> }
+                      .show()
+              }
+          }*/
         val l = ScreenListener(this)
 
         l.begin(object : ScreenStateListener {
@@ -105,6 +147,32 @@ class MainActivity : AppCompatActivity() {
                 AnXinLiveRoomAutomaticLikesScript.runStatus = false
             }
         })
+        accessibilityServiceStatusSwitch.setOnToggledListener { toggleableView, isOn ->
+            val accessibilityServiceOn = ApiUtil.isAccessibilityServiceOn(
+                UiApplication.context,
+                MainAccessService::class.java
+            )
+            if (accessibilityServiceOn) {
+                accessibilityServiceStatusSwitch.isOn = true
+            } else {
+                if (isOn) {
+                    gotoAccessibilitySettings(this@MainActivity)
+                }
+            }
+        }
+        floatingWindowSwitch.setOnToggledListener { toggleableView, isOn ->
+            if (PermissionUtils.checkPermission(this)) {
+                floatingWindowSwitch.isOn = true
+            } else {
+                if (isOn) {
+                    PermissionUtils.requestPermission(this, object : OnPermissionResult {
+                        override fun permissionResult(isOpen: Boolean) {
+                            floatingWindowSwitch.isOn = isOpen
+                        }
+                    })
+                }
+            }
+        }
     }
 
     override fun onResume() {
@@ -113,7 +181,15 @@ class MainActivity : AppCompatActivity() {
             UiApplication.context,
             MainAccessService::class.java
         )
-        accessibilityServiceStatus.isChecked = accessibilityServiceOn
+        val hasPermission = PermissionUtils.checkPermission(this)
+        accessibilityServiceStatusSwitch.isOn = accessibilityServiceOn
+        floatingWindowSwitch.isOn = hasPermission
+        if (accessibilityServiceOn) {
+            accessibilityServiceStatusSwitch.isEnabled = false
+        }
+        if (hasPermission) {
+            floatingWindowSwitch.isEnabled = false
+        }
         updateCurrentDesc()
     }
 
@@ -134,8 +210,31 @@ class MainActivity : AppCompatActivity() {
                 EditSettingsActivity.CLICK_COUNT_KEY,
                 "3100"
             )
-//        tvCurrentDesc.text = "当前设置如下\n点击次数：${currentCount}\n抖音昵称：${currentHostName}\n判断直播间条件：${currentMmustConditions}\n"
-        tvCurrentDesc.text = "当前设置如下\n点击次数：${currentCount}\n"
+        try {
+            val count = currentCount.toInt()
+            tvClickNumberBtnTitle.text = "点击次数：${count}"
+        } catch (e: Exception) {
+            tvClickNumberBtnTitle.text = "点击次数：${3100}"
+        }
+
+
+        var userX = CommonPreferencesUtil.getFloat(CoordinateActivity.USER_IMG_X_KEY, 0F)
+        var userY = CommonPreferencesUtil.getFloat(CoordinateActivity.USER_IMG_X_KEY, 0F)
+
+        if (userX == 0F || userY == 0F) {
+            val context = UiApplication.context
+            val screenWidth = Screen.getScreenWidth(context)
+            val screenHeight = Screen.getScreenHeight(context)
+            //点击头像
+//            AcessibilityApi.click((screenWidth * 0.18F).toInt(), (screenHeight * 0.245).toInt())
+            userX = screenWidth * 0.18F
+            userY = screenHeight * 0.245F
+            tvClickCoordinateBtnTitle.text = "点赞坐标：(${userX.toInt()},${userY.toInt()})"
+        } else {
+            //点击头像设置坐标点
+            tvClickCoordinateBtnTitle.text = "点赞坐标：(${userX.toInt()},${userY.toInt()})"
+        }
+
     }
 
 
@@ -159,6 +258,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showAppFloat() {
+        EasyFloat.dismiss()
         EasyFloat.with(this.applicationContext)
             .setShowPattern(ShowPattern.ALL_TIME)
             .setSidePattern(SidePattern.RESULT_SIDE)
@@ -222,10 +322,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun checkAccessibilityServiceOn(callback: () -> Unit) {
-        if (ApiUtil.isAccessibilityServiceOn(
-                UiApplication.context,
-                MainAccessService::class.java
-            )
+        if (ApiUtil.isAccessibilityServiceOn(UiApplication.context, MainAccessService::class.java)
         ) {
             callback.invoke()
         } else {

@@ -1,4 +1,4 @@
-package com.example.androidautoclick
+package com.logan.androidautoclick
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

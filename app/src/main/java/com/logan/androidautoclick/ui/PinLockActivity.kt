@@ -1,29 +1,25 @@
-package com.example.androidautoclick.ui
+package com.logan.androidautoclick.ui
 
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import com.example.androidautoclick.R
+import com.logan.androidautoclick.R
 import com.github.ihsg.patternlocker.OnPatternChangeListener
 import com.github.ihsg.patternlocker.PatternLockerView
-import jp.wasabeef.blurry.Blurry
-import kotlinx.android.synthetic.main.activity_main.ivBackground
 import kotlinx.android.synthetic.main.activity_pinlockview.pattern_indicator_view
 import kotlinx.android.synthetic.main.activity_pinlockview.pattern_lock_view
 import java.util.Calendar
 import java.util.Date
 
-class PinLockActivity : AppCompatActivity() {
+class PinLockActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pinlockview)
-        Blurry.with(ivBackground.context)
-            .sampling(3)
-            .animate(500)
-            .from(BitmapFactory.decodeResource(resources, R.drawable.img_anxin_shu))
-            .into(ivBackground)
+        /*        Blurry.with(ivBackground.context)
+                    .sampling(3)
+                    .animate(500)
+                    .from(BitmapFactory.decodeResource(resources, R.drawable.img_anxin_shu))
+                    .into(ivBackground)*/
         pattern_lock_view.setOnPatternChangedListener(object : OnPatternChangeListener {
             override fun onChange(view: PatternLockerView, hitIndexList: List<Int>) {
                 pattern_indicator_view.updateState(hitIndexList, false)

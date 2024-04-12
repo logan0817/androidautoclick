@@ -1,4 +1,4 @@
-package com.example.androidautoclick.ui.uitils
+package com.logan.androidautoclick.ui.uitils
 
 import android.content.res.Resources
 import android.util.TypedValue

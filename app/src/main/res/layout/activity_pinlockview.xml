@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
     <ImageView
         android:id="@+id/ivBackground"
@@ -23,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="请输入正确密码解锁"
-            android:textColor="@color/color_F8F0D6"
+            android:textColor="@color/purple_200"
             android:textSize="16sp" />
 
         <com.github.ihsg.patternlocker.PatternIndicatorView

@@ -8,7 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="color_7B7C7D">#7B7C7D</color>
-    <color name="color_F8F0D6">#F8F0D6</color>
+    <color name="color_F8F0D6">@color/purple_200</color>
     <color name="color_FF9041">#FF9041</color>
     <color name="color_5B5E63">#5B5E63</color>
     <color name="gray">#353535</color>
@@ -31,4 +31,5 @@
     <color name="mainBackground">#E6FFFFFF</color>
     <color name="titleColor">#989898</color>
     <color name="light_gray">#242424</color>
+    <color name="color_283B5B">#283B5B</color>
 </resources>
