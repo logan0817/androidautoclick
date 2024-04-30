@@ -1,4 +1,4 @@
-package com.logan.androidautoclick.ui.uitils;
+package com.example.androidautoclick.ui.uitils;
 
 
 import android.os.Environment;

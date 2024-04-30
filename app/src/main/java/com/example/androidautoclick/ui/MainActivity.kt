@@ -1,10 +1,11 @@
-package com.logan.androidautoclick.ui
+package com.example.androidautoclick.ui
 
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.os.VibrationEffect
@@ -17,12 +18,12 @@ import android.widget.TextView
 import android.widget.Toast
 import com.auto.assist.accessibility.util.ApiUtil
 import com.auto.assist.accessibility.util.Screen
-import com.logan.androidautoclick.R
-import com.logan.androidautoclick.ui.ScreenListener.ScreenStateListener
-import com.logan.androidautoclick.ui.script.AnXinLiveRoomAutomaticLikesScript
-import com.logan.androidautoclick.ui.uitils.CommonPreferencesUtil
-import com.logan.androidautoclick.ui.uitils.DensityUtils
-import com.logan.androidautoclick.ui.uitils.Utils
+import com.example.androidautoclick.R
+import com.example.androidautoclick.ui.ScreenListener.ScreenStateListener
+import com.example.androidautoclick.ui.script.AnXinLiveRoomAutomaticLikesScript
+import com.example.androidautoclick.ui.uitils.CommonPreferencesUtil
+import com.example.androidautoclick.ui.uitils.DensityUtils
+import com.example.androidautoclick.ui.uitils.Utils
 import com.lzf.easyfloat.EasyFloat
 import com.lzf.easyfloat.enums.ShowPattern
 import com.lzf.easyfloat.enums.SidePattern
@@ -31,12 +32,14 @@ import com.lzf.easyfloat.interfaces.OnTouchRangeListener
 import com.lzf.easyfloat.permission.PermissionUtils
 import com.lzf.easyfloat.utils.DragUtils
 import com.lzf.easyfloat.widget.BaseSwitchView
+import jp.wasabeef.blurry.Blurry
 import kotlinx.android.synthetic.main.activity_main.accessibilityServiceStatusSwitch
 import kotlinx.android.synthetic.main.activity_main.actionStart
 import kotlinx.android.synthetic.main.activity_main.clickAppShareBtn
 import kotlinx.android.synthetic.main.activity_main.clickCoordinateBtn
 import kotlinx.android.synthetic.main.activity_main.clickNumberBtn
 import kotlinx.android.synthetic.main.activity_main.floatingWindowSwitch
+import kotlinx.android.synthetic.main.activity_main.ivBackground
 import kotlinx.android.synthetic.main.activity_main.tvClickCoordinateBtnTitle
 import kotlinx.android.synthetic.main.activity_main.tvClickNumberBtnTitle
 import kotlinx.android.synthetic.main.activity_main.userGuideBtn
@@ -67,11 +70,11 @@ class MainActivity : BaseActivity() {
 
 
     private fun initView() {
-        /*        Blurry.with(ivBackground.context)
-                    .sampling(3)
-                    .animate(500)
-                    .from(BitmapFactory.decodeResource(resources, R.drawable.img_anxin_shu))
-                    .into(ivBackground)*/
+        Blurry.with(ivBackground.context)
+            .sampling(3)
+            .animate(500)
+            .from(BitmapFactory.decodeResource(resources, R.drawable.img_anxin_shu))
+            .into(ivBackground)
     }
 
     private fun setListener() {
@@ -82,12 +85,12 @@ class MainActivity : BaseActivity() {
             startActivity(Intent(this, CoordinateActivity::class.java))
         }
         userGuideBtn.setOnClickListener {
-            val url = "https://easylink.cc/ow94ck"
+            val url = "https://easylink.cc/vv9kyg"
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
             startActivity(intent)
         }
         clickAppShareBtn.setOnClickListener {
-            val url = "https://fir.xcxwo.com/xjg"
+            val url = "https://fir.xcxwo.com/zxvlew"
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
             startActivity(intent)
         }

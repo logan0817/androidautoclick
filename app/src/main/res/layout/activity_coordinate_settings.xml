@@ -22,7 +22,7 @@
         app:title="设置点击坐标"
         app:titleColor="@color/white" />
 
-    <com.logan.androidautoclick.ui.view.MyDrawLineView
+    <com.example.androidautoclick.ui.view.MyDrawLineView
         android:id="@+id/myDrawLineView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

@@ -1,4 +1,4 @@
-package com.logan.androidautoclick.ui;
+package com.example.androidautoclick.ui;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

@@ -1,13 +1,13 @@
-package com.logan.androidautoclick.ui
+package com.example.androidautoclick.ui
 
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import com.logan.androidautoclick.R
-import com.logan.androidautoclick.ui.script.AnXinLiveRoomAutomaticLikesScript
-import com.logan.androidautoclick.ui.uitils.CommonPreferencesUtil
+import com.example.androidautoclick.R
+import com.example.androidautoclick.ui.script.AnXinLiveRoomAutomaticLikesScript
+import com.example.androidautoclick.ui.uitils.CommonPreferencesUtil
 import com.hjq.bar.OnTitleBarListener
 import com.hjq.bar.TitleBar
 import jp.wasabeef.blurry.Blurry

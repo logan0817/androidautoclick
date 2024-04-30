@@ -1,4 +1,4 @@
-package com.logan.androidautoclick.ui.uitils;
+package com.example.androidautoclick.ui.uitils;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -8,7 +8,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.util.Log;
 
-import com.logan.androidautoclick.ui.UiApplication;
+import com.example.androidautoclick.ui.UiApplication;
 
 import java.util.ArrayList;
 import java.util.List;

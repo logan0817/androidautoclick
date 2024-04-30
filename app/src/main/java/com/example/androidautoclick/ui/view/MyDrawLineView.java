@@ -1,4 +1,4 @@
-package com.logan.androidautoclick.ui.view;
+package com.example.androidautoclick.ui.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -10,7 +10,7 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-import com.logan.androidautoclick.R;
+import com.example.androidautoclick.R;
 
 public class MyDrawLineView extends View {
 

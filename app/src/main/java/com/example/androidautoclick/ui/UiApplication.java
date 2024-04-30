@@ -1,9 +1,9 @@
-package com.logan.androidautoclick.ui;
+package com.example.androidautoclick.ui;
 
 import android.app.Application;
 import android.content.Context;
 
-import com.logan.androidautoclick.ui.uitils.CommonPreferencesUtil;
+import com.example.androidautoclick.ui.uitils.CommonPreferencesUtil;
 
 public class UiApplication extends Application
 {

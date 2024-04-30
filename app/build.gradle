@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace 'com.logan.androidautoclick'
+    namespace 'com.example.androidautoclick'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.logan.androidautoclick"
+        applicationId "com.example.androidautoclick"
         minSdk 24
         targetSdk 33
         versionCode 1

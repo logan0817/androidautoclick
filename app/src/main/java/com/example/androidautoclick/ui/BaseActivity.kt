@@ -1,9 +1,9 @@
-package com.logan.androidautoclick.ui
+package com.example.androidautoclick.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.logan.androidautoclick.R
-import com.logan.androidautoclick.ui.uitils.immersive
+import com.example.androidautoclick.R
+import com.example.androidautoclick.ui.uitils.immersive
 
 open class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

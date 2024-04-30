@@ -1,4 +1,4 @@
-package com.logan.androidautoclick.ui.uitils;
+package com.example.androidautoclick.ui.uitils;
 
 
 import android.app.Activity;
@@ -17,7 +17,7 @@ import androidx.annotation.RequiresApi;
 import androidx.core.graphics.ColorUtils;
 
 
-import com.logan.androidautoclick.R;
+import com.example.androidautoclick.R;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

@@ -21,7 +21,7 @@
         app:barStyle="transparent"
         app:layout_constraintTop_toTopOf="parent"
         app:leftIcon="@null"
-        app:title="小酒馆"
+        app:title="安欣✨电台"
         app:titleColor="@color/white" />
 
     <!--    app:rightIcon="@drawable/icon_settings"-->

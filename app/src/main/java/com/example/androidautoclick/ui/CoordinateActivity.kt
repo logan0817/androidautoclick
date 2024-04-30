@@ -1,10 +1,10 @@
-package com.logan.androidautoclick.ui
+package com.example.androidautoclick.ui
 
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import com.auto.assist.accessibility.util.Screen
-import com.logan.androidautoclick.R
-import com.logan.androidautoclick.ui.uitils.CommonPreferencesUtil
+import com.example.androidautoclick.R
+import com.example.androidautoclick.ui.uitils.CommonPreferencesUtil
 import jp.wasabeef.blurry.Blurry
 import kotlinx.android.synthetic.main.activity_coordinate_settings.btnSave1
 import kotlinx.android.synthetic.main.activity_coordinate_settings.btnSave2
