@@ -40,7 +40,7 @@
         <service
             android:name=".ui.MainAccessService"
             android:exported="true"
-            android:label="86说点这里-辅助服务"
+            android:label="86说点这里-给安子点赞辅助服务"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />
