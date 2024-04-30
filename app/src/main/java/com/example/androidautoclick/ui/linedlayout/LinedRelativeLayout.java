@@ -1,4 +1,4 @@
-package com.logan.androidautoclick.ui.linedlayout;
+package com.example.androidautoclick.ui.linedlayout;
 
 import android.content.Context;
 import android.graphics.Paint;

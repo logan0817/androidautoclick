@@ -1,13 +1,13 @@
-package com.logan.androidautoclick.ui.script
+package com.example.androidautoclick.ui.script
 
 import com.auto.assist.accessibility.api.AcessibilityApi
 import com.auto.assist.accessibility.api.UiApi
 import com.auto.assist.accessibility.util.LogUtil
 import com.auto.assist.accessibility.util.Screen
-import com.logan.androidautoclick.ui.CoordinateActivity
-import com.logan.androidautoclick.ui.UiApplication
-import com.logan.androidautoclick.ui.uitils.CommonPreferencesUtil
-import com.logan.androidautoclick.ui.uitils.Utils
+import com.example.androidautoclick.ui.CoordinateActivity
+import com.example.androidautoclick.ui.UiApplication
+import com.example.androidautoclick.ui.uitils.CommonPreferencesUtil
+import com.example.androidautoclick.ui.uitils.Utils
 
 /**
  * author: Logan
