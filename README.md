@@ -5,7 +5,7 @@
 * 2、打开抖音后，点击开始点赞，连续点赞3000+
 * 3、注意因为软件一直连续点击屏幕，所以取消停止点赞按钮可能点击不生效，所以可以连续点击停止按钮五次以上，或者锁屏都会停止点赞。
 
-## 默认点赞跳转脚本具体逻辑在该类：[AnXinLiveRoomAutomaticLikesScript.kt](app/src/main/java/com/example/androidautoclick/ui/script/AnXinLiveRoomAutomaticLikesScript.kt)
+## 默认点赞跳转脚本具体逻辑在该类：[AnXinLiveRoomAutomaticLikesScript.kt](app/src/main/java/com/logan/androidautoclick/ui/script/AnXinLiveRoomAutomaticLikesScript.kt)
 
 ### 需要自己打开什么软件【抖Y,快S】？做什么事情，参考该类自己改。
 
@@ -41,7 +41,7 @@
 
 
 
-## The specific logic of the default like jump script is in this class: [AnXinLiveRoomAutomaticLikesScript.kt](app/src/main/java/com/example/androidautoclick/ui/script/AnXinLiveRoomAutomaticLikesScript.kt)
+## The specific logic of the default like jump script is in this class: [AnXinLiveRoomAutomaticLikesScript.kt](app/src/main/java/com/logan/androidautoclick/ui/script/AnXinLiveRoomAutomaticLikesScript.kt)
 
 
 

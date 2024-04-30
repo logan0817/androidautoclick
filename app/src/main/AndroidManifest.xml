@@ -36,9 +36,11 @@
         <activity android:name=".ui.PinLockActivity"></activity>
         <activity android:name=".ui.EditSettingsActivity"></activity>
         <activity android:name=".ui.CoordinateActivity"></activity>
+
         <service
             android:name=".ui.MainAccessService"
             android:exported="true"
+            android:label="86说点这里-小酒馆辅助服务"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />
